@@ -30,7 +30,7 @@ const Login = () => {
                 <form>
                     <div class="user-box">
                         <input required="" name="" onChange={(e) => setEmailInpValue(e.target.value)} type="text" />
-                        <label>Email</label>
+                        <label>userName</label>
                     </div>
                     <div class="user-box">
                         <input required="" name="" onChange={(e) => setPasswordInpValue(e.target.value)} type="password" />

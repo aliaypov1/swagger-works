@@ -10,9 +10,7 @@ const Registr = () => {
     const [phonedInpValue, setPhoneInpValue] = useState("")
     const ifs = (e)=>{
         if(e.target.value === ''){
-           return alert('э бля поле заполнил нахуй')
-        }else{
-           return alert('пиздуй дальше')
+           return alert('заполните поле')
         }
 
     

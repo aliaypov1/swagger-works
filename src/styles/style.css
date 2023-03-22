@@ -26,9 +26,17 @@
     background-color: #15172b;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 350px;
-    padding: 20px;
-    width: 320px;
+    padding: 60px;
+    width: 520px;
+    margin-bottom: 80px;
+  }
+  .conts{
+    color: aliceblue;
+    font-family: sans-serif;
+    font-size: 24px;
+    
+    text-align: start;
+    margin-top: 8px;
   }
   
   .title {

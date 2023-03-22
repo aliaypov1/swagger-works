@@ -43,7 +43,7 @@ const App = ()=>{
   return(
     <>
     <BrowserRouter>
-    <Header></Header>
+    {/* <Header></Header> */}
     <Routes>
 
     
