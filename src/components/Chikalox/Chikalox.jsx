@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 const Chikalox = () => {
   
     const [userIputValue, setUserInputValue] = useState("")
@@ -8,13 +8,20 @@ const Chikalox = () => {
     const [nameIputValue, setNamerInputValue] = useState("")
     const [emailIputValue, setEmailInputValue] = useState("")
     const [phoneIputValue, setPhonerInputValue] = useState("")
+    const [lastInputValue, setLastInputValue] = useState("")
+    const [linkInputValue, setLinkInputValue] = useState("")
+    const [idInputValue, setIdInputValue] = useState("")
    
     const user = userIputValue
     const pass = passIputValue
     const name = nameIputValue
     const phone = phoneIputValue
     const email = emailIputValue
+    const last = lastInputValue
+    const link = linkInputValue
+    const id = idInputValue
     const [wts, setWts] = useState([])
+    const [arr, setArr] = useState([])
     const nwn = document.querySelector('.ds')
     const updateUser = async () => {
         const list = document.querySelector('.list')
@@ -59,7 +66,25 @@ const Chikalox = () => {
             alert(error)
         }
     }
-    
+    const createImg = async () => {
+        const resp = await fetch(`https://petstore.swagger.io/v2/pet`, {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                name:last,
+                photoUrls:[`${link}`],
+                id: id
+            })
+        });
+        const data = await resp.json()
+        console.log(data)
+        setArr(arr => [ data])
+        console.log(arr);
+
+    }
     return (
         <>
  <header class="header">
@@ -68,8 +93,12 @@ const Chikalox = () => {
             <Link to='/' class="header__link">Зарегистрироваться</Link>
             <a href="./reg.html" class="header__link">{wts.map(item => (
             
-            <a className="conts">{item.username}</a>
+           <a className=""> <a className="conts">{item.username}</a></a>
         ))}</a>
+          <a href="./reg.html" class="header__link">{arr.map(item => (
+            
+            <a className=""> <img className="icons" width='80px' src={item.photoUrls} alt="" /></a>
+         ))}</a>
             <a href="#" class="header__link">Contact</a>
             
             
@@ -103,6 +132,7 @@ const Chikalox = () => {
                     <div class="cut cut-short"></div>
                     <label for="email" class="placeholder">
                     </label></div>
+                    
                    
                 <button onClick={(e) => updateUser(e)&deletes(e)&setTimeout(e=>{
                     getUser()
@@ -113,6 +143,23 @@ const Chikalox = () => {
         ))}
         <div className="list"></div>
             </div>
+            
+
+<div className="form containers"> 
+  <label for="nome">Name:</label>
+  
+    <input type="text" class="infos" id="nome" onChange={(e)=> setLastInputValue(e.target.value)} name="nome"/>
+  <div class="mario"></div>
+    <label for="email">E-mail:</label>
+    <input type="text" id="email" name="email" onChange={(e)=> setLinkInputValue(e.target.value)}/><br /><br /><br />
+    <label for="email">ID</label>
+    <input type="number" id="email" name="email" onChange={(e)=> setIdInputValue(e.target.value)}/><br /><br /><br />
+                   
+    <button type="submit" onClick={(e)=> createImg(e)}>Send</button>
+  
+
+    </div> 
+            
         </>
     )
 }
