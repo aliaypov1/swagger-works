@@ -74,7 +74,7 @@ const Chikalox = () => {
                 'Content-Type': 'application/json'
             },
             body:JSON.stringify({
-                name:last,
+                name:name,
                 photoUrls:[`${link}`],
                 id: id
             })
@@ -90,16 +90,19 @@ const Chikalox = () => {
  <header class="header">
         <div class="header__logo">My BD</div>
         <nav>
-            <Link to='/' class="header__link">Зарегистрироваться</Link>
-            <a href="./reg.html" class="header__link">{wts.map(item => (
-            
-           <a className=""> <a className="conts">{item.username}</a></a>
-        ))}</a>
-          <a href="./reg.html" class="header__link">{arr.map(item => (
+        <a href="./reg.html" class="header__link">{arr.map(item => (
             
             <a className=""> <img className="icons" width='80px' src={item.photoUrls} alt="" /></a>
          ))}</a>
-            <a href="#" class="header__link">Contact</a>
+        </nav>
+        <nav>
+            <Link to='/' class="header__link">Зарегистрироваться</Link>
+            <a href="./reg.html" class="header__link">{wts.map(item => (
+            
+           <a className=""> <a className="header__link">{item.username}</a></a>
+        ))}</a>
+         
+          
             
             
         
@@ -131,12 +134,26 @@ const Chikalox = () => {
                     <input id="email" class="input" type="number" onChange={(e) => setPhonerInputValue(e.target.value)} placeholder="введите новый номер телефона" />
                     <div class="cut cut-short"></div>
                     <label for="email" class="placeholder">
+                        
+                    </label></div>
+                    <div class="input-container ic2">
+                    <input id="email" class="input" type="text" onChange={(e) => setLinkInputValue(e.target.value)} placeholder="imgLink" />
+                    <div class="cut cut-short"></div>
+                    <label for="email" class="placeholder">
+                        
+                    </label></div>
+                    <div class="input-container ic2">
+                    <input id="email" class="input" type="number" onChange={(e) => setIdInputValue(e.target.value)} placeholder="ID" />
+                    <div class="cut cut-short"></div>
+                    <label for="email" class="placeholder">
+                        
                     </label></div>
                     
+                    
                    
-                <button onClick={(e) => updateUser(e)&deletes(e)&setTimeout(e=>{
+                <button onClick={(e) => updateUser(e)&deletes(e)&createImg(e)&setTimeout(e=>{
                     getUser()
-                },3000)} type="text" class="submit">submit</button>
+                },3000)} type="text" class="submit">Войти</button>
                 {wts.map(item => (
             
             <div className="conts">Данные успешно измененны на <br />{'имя : '+item.username} <br />{'пароль : '+item.password} <br />{'номер : '+item.phone} <br />{'почта : '+item.email}</div>
@@ -145,7 +162,7 @@ const Chikalox = () => {
             </div>
             
 
-<div className="form containers"> 
+{/* <div className="form containers"> 
   <label for="nome">Name:</label>
   
     <input type="text" class="infos" id="nome" onChange={(e)=> setLastInputValue(e.target.value)} name="nome"/>
@@ -155,10 +172,10 @@ const Chikalox = () => {
     <label for="email">ID</label>
     <input type="number" id="email" name="email" onChange={(e)=> setIdInputValue(e.target.value)}/><br /><br /><br />
                    
-    <button type="submit" onClick={(e)=> createImg(e)}>Send</button>
+    <button type="submit" onClick={(e)=> createImg(e)}>добавить</button>
   
 
-    </div> 
+    </div>  */}
             
         </>
     )

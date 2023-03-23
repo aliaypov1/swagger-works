@@ -293,7 +293,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 90px;
-    
+    align-items: center;
    }
   .card {
     display: flex;
